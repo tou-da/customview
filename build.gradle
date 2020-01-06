@@ -1,0 +1,56 @@
+buildscript {
+    ext {
+        compileSdkVer = 31
+        minSdkVer = 21
+
+        library = [:]
+        def androidx = [:]
+        androidx.appcompat = "1.2.0"
+        androidx.coordinatorlayout = "1.1.0"
+        androidx.constraintlayout = "2.0.4"
+        androidx.junit = "1.1.2"
+        androidx.espressoCore = "3.3.0"
+        library.androidx = androidx
+
+        def google = [:]
+        google.material = "1.2.1"
+        google.gson = '2.8.6'
+        library.google = google
+
+        def third = [:]
+        third.junit = "4.13.2"
+        third.kotlin = '1.6.10'
+        third.anchortask = '1.0.0'
+        third.hawk = '2.0.1'
+        third.rxjava = '2.1.8'
+        third.rxandroid = '2.0.1'
+        third.umSdkCommon = '9.5.2'
+        third.glide = '4.7.1'
+        third.ThinkingAnalyticsSDK = "2.8.3"
+        third.basesys = '0.0.+'
+        third.NTAnalytics = '1.6.3'
+        library.third = third
+    }
+
+    repositories {
+        google()
+        jcenter()
+    }
+
+    dependencies {
+        classpath 'com.android.tools.build:gradle:4.2.2'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:${library.third.kotlin}"
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        jcenter()
+        mavenCentral()
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
